@@ -62,6 +62,27 @@ Each conversation includes:
 - Participant metadata (names, roles, contact info)
 - Call metadata (duration, timestamp, disposition)
 
+## Running the Viewer
+
+The repository includes a Streamlit-based viewer for exploring the VCON conversations. To run the viewer:
+
+1. Install the required dependencies:
+```bash
+pip install streamlit pandas
+```
+
+2. Run the viewer:
+```bash
+streamlit run vcon_viewer.py
+```
+
+The viewer will open in your default web browser and provides the following features:
+- Browse conversations by day
+- View conversation metadata and transcripts
+- Listen to audio recordings
+- Filter and search through conversations
+- View detailed analysis and diarization
+
 ## Typical Interaction Flow
 
 1. Agent greeting with company name and agent introduction
