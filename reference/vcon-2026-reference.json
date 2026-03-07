@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "vCon 2026 – Utility Outage Reports (AI intake)",
+  "role": "reference_dataset",
+  "intended_for": "vCon 2026",
+  "synthetic_data": true,
+  "disclaimer": "All data in this dataset is synthetic (generated for reference and demos). Not from real customers, utilities, or emergency calls.",
+  "description": "Reference vCon dataset for vCon 2026: utility outage reports (gas leak, power outage) with AI intake, caller ID address verification, and real-time technician ETA; no human dispatcher.",
+  "vcon_version": "0.0.1",
+  "conversation_count": 42,
+  "date_range": {
+    "start": "2025-05-18",
+    "end": "2025-05-24",
+    "folder_days": ["18", "19", "20", "21", "22", "23", "24"]
+  },
+  "domain": "utility_outage_reporting",
+  "domain_detail": "Gas leak and power outage reports; AI virtual assistant handles intake, address verification via caller ID, technician/restoration ETA; no human dispatcher",
+  "language": "en",
+  "layout": {
+    "conversations_path_pattern": "{day}/*.vcon.json",
+    "day_folders": ["18", "19", "20", "21", "22", "23", "24"],
+    "audio": "Referenced in dialog[].url; optional local .mp3 with same base name as .vcon.json file"
+  },
+  "vcon_structure": {
+    "top_level": ["uuid", "vcon", "created_at", "redacted", "group", "parties", "dialog", "attachments", "analysis"],
+    "parties": "Array of { tel, mailto, name, role, meta, id }. Agent is AI virtual assistant (meta.role: ai_assistant, caller_id_verification: true); customer is caller.",
+    "dialog": "Array of recording objects with type, start, parties, mimetype, filename, url, duration, meta (report_type: utility_outage)",
+    "analysis": "Array of { type: 'transcript'|'summary'|'diarized', dialog, vendor, body, encoding }. transcript body may be string or { transcript, confidence, detected_language }; diarized uses AI: / Caller:"
+  },
+  "analysis_vendors": {
+    "transcript": "deepgram",
+    "summary": "openai",
+    "diarized": "openai"
+  },
+  "citation": {
+    "title": "vCon 2026 – Utility outage report conversations (AI intake, caller ID verification, technician ETA)",
+    "role": "Reference vCon dataset for vCon 2026",
+    "vcon_version": "0.0.1"
+  },
+  "manifest_version": "1.0",
+  "updated": "2026-03-07"
+}

@@ -1,0 +1,79 @@
+{
+  "uuid": "e57644ff-0e6b-494d-8795-67b70856f99d",
+  "vcon": "0.0.1",
+  "created_at": "2025-06-01T04:16:44-04:00",
+  "redacted": {},
+  "group": [],
+  "parties": [
+    {
+      "tel": "+15550009111",
+      "mailto": "l.torres@psap.gov",
+      "name": "Lisa Torres",
+      "role": "agent",
+      "meta": {
+        "role": "dispatcher",
+        "psap": "PSAP-1"
+      },
+      "id": "l.torres@psap.gov"
+    },
+    {
+      "tel": "+15551234003",
+      "mailto": "d.park@email.com",
+      "name": "David Park",
+      "role": "customer",
+      "meta": {
+        "role": "caller"
+      },
+      "id": "+15551234003_d.park@email.com_1100"
+    }
+  ],
+  "dialog": [
+    {
+      "type": "recording",
+      "start": "2025-06-01T04:16:00-04:00",
+      "parties": [
+        1,
+        0
+      ],
+      "mimetype": "audio/x-wav",
+      "filename": "e57644ff-0e6b-494d-8795-67b70856f99d.mp3",
+      "url": "",
+      "alg": "SHA-512",
+      "signature": "",
+      "duration": 44.127,
+      "meta": {
+        "disposition": "ANSWERED",
+        "direction": "in",
+        "emergency_type": "911"
+      }
+    }
+  ],
+  "attachments": [],
+  "analysis": [
+    {
+      "type": "transcript",
+      "dialog": 0,
+      "vendor": "deepgram",
+      "body": {
+        "transcript": "911, what is your emergency?\n\nSomeone broke into my house. I think they're still inside. I'm in the bedroom with the door locked.\n\nStay where you are. Don't confront them. What's your address?\n\n5520 Cedar Lane.\n\n5520 Cedar Lane. Are you alone?\n\nMy wife is with me. We're both in the bedroom.\n\nOfficers are on the way. Can you describe any vehicle or person you saw?\n\nI saw a dark sedan speed off. I didn't get the plate. I heard the back door break.\n\nStay on the line. Keep the door locked. Police are about four minutes out.",
+        "confidence": 0.99,
+        "detected_language": "en"
+      },
+      "encoding": "none"
+    },
+    {
+      "type": "summary",
+      "dialog": 0,
+      "vendor": "openai",
+      "body": "Caller reports possible burglary in progress at 5520 Cedar Lane; caller and wife locked in bedroom. Dark sedan seen leaving. Police dispatched.",
+      "encoding": "none"
+    },
+    {
+      "type": "diarized",
+      "dialog": 0,
+      "vendor": "openai",
+      "body": "Dispatcher: 911, what is your emergency?\n\nCaller: Someone broke into my house. I think they're still inside. I'm in the bedroom with the door locked.\n\nDispatcher: Stay where you are. Don't confront them. What's your address?\n\nCaller: 5520 Cedar Lane.\n\nDispatcher: 5520 Cedar Lane. Are you alone?\n\nCaller: My wife is with me. We're both in the bedroom.\n\nDispatcher: Officers are on the way. Can you describe any vehicle or person you saw?\n\nCaller: I saw a dark sedan speed off. I didn't get the plate. I heard the back door break.\n\nDispatcher: Stay on the line. Keep the door locked. Police are about four minutes out.",
+      "encoding": "none"
+    }
+  ]
+}

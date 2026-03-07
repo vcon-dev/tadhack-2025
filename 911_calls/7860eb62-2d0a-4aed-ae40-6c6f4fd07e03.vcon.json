@@ -1,0 +1,79 @@
+{
+  "uuid": "7860eb62-2d0a-4aed-ae40-6c6f4fd07e03",
+  "vcon": "0.0.1",
+  "created_at": "2025-06-01T02:52:06-04:00",
+  "redacted": {},
+  "group": [],
+  "parties": [
+    {
+      "tel": "+15550009111",
+      "mailto": "s.williams@psap.gov",
+      "name": "Sarah Williams",
+      "role": "agent",
+      "meta": {
+        "role": "dispatcher",
+        "psap": "PSAP-1"
+      },
+      "id": "s.williams@psap.gov"
+    },
+    {
+      "tel": "+15551234002",
+      "mailto": "r.miller@email.com",
+      "name": "Robert Miller",
+      "role": "customer",
+      "meta": {
+        "role": "caller"
+      },
+      "id": "+15551234002_r.miller@email.com_1100"
+    }
+  ],
+  "dialog": [
+    {
+      "type": "recording",
+      "start": "2025-06-01T02:51:00-04:00",
+      "parties": [
+        1,
+        0
+      ],
+      "mimetype": "audio/x-wav",
+      "filename": "7860eb62-2d0a-4aed-ae40-6c6f4fd07e03.mp3",
+      "url": "",
+      "alg": "SHA-512",
+      "signature": "",
+      "duration": 66.732,
+      "meta": {
+        "disposition": "ANSWERED",
+        "direction": "in",
+        "emergency_type": "911"
+      }
+    }
+  ],
+  "attachments": [],
+  "analysis": [
+    {
+      "type": "transcript",
+      "dialog": 0,
+      "vendor": "deepgram",
+      "body": {
+        "transcript": "911, what is your emergency?\n\nThere's a fire in the garage! I can see smoke and flames!\n\nGet everyone out of the house right now. Are you outside?\n\nYes, we're all out. The garage is attached to the house.\n\nWhat's your address?\n\n1807 Maple Drive.\n\n1807 Maple Drive. Fire is on the way. Don't go back inside. Is anyone still in the house?\n\nNo, just me and my wife. We're in the driveway.\n\nGood. Stay outside. Units are en route.",
+        "confidence": 0.99,
+        "detected_language": "en"
+      },
+      "encoding": "none"
+    },
+    {
+      "type": "summary",
+      "dialog": 0,
+      "vendor": "openai",
+      "body": "Caller reports fire in attached garage at 1807 Maple Drive. All occupants evacuated. Dispatcher confirms address and advises to stay outside; units dispatched.",
+      "encoding": "none"
+    },
+    {
+      "type": "diarized",
+      "dialog": 0,
+      "vendor": "openai",
+      "body": "Dispatcher: 911, what is your emergency?\n\nCaller: There's a fire in the garage! I can see smoke and flames!\n\nDispatcher: Get everyone out of the house right now. Are you outside?\n\nCaller: Yes, we're all out. The garage is attached to the house.\n\nDispatcher: What's your address?\n\nCaller: 1807 Maple Drive.\n\nDispatcher: 1807 Maple Drive. Fire is on the way. Don't go back inside. Is anyone still in the house?\n\nCaller: No, just me and my wife. We're in the driveway.\n\nDispatcher: Good. Stay outside. Units are en route.",
+      "encoding": "none"
+    }
+  ]
+}

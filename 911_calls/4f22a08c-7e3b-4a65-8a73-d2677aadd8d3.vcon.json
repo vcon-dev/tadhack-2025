@@ -1,0 +1,79 @@
+{
+  "uuid": "4f22a08c-7e3b-4a65-8a73-d2677aadd8d3",
+  "vcon": "0.0.1",
+  "created_at": "2025-06-01T00:08:59-04:00",
+  "redacted": {},
+  "group": [],
+  "parties": [
+    {
+      "tel": "+15550009111",
+      "mailto": "j.chen@psap.gov",
+      "name": "James Chen",
+      "role": "agent",
+      "meta": {
+        "role": "dispatcher",
+        "psap": "PSAP-1"
+      },
+      "id": "j.chen@psap.gov"
+    },
+    {
+      "tel": "+15551234001",
+      "mailto": "maria.santos@email.com",
+      "name": "Maria Santos",
+      "role": "customer",
+      "meta": {
+        "role": "caller"
+      },
+      "id": "+15551234001_maria.santos@email.com_1100"
+    }
+  ],
+  "dialog": [
+    {
+      "type": "recording",
+      "start": "2025-06-01T00:08:00-04:00",
+      "parties": [
+        1,
+        0
+      ],
+      "mimetype": "audio/x-wav",
+      "filename": "4f22a08c-7e3b-4a65-8a73-d2677aadd8d3.mp3",
+      "url": "",
+      "alg": "SHA-512",
+      "signature": "",
+      "duration": 59.922,
+      "meta": {
+        "disposition": "ANSWERED",
+        "direction": "in",
+        "emergency_type": "911"
+      }
+    }
+  ],
+  "attachments": [],
+  "analysis": [
+    {
+      "type": "transcript",
+      "dialog": 0,
+      "vendor": "deepgram",
+      "body": {
+        "transcript": "911, what is your emergency?\n\nI need an ambulance! My husband collapsed and he's not breathing right!\n\nOkay, stay calm. I'm sending help. Is he conscious?\n\nBarely. He's gasping. We're at 4421 Oak Street, apartment 3B.\n\n4421 Oak Street, apartment 3B. Is he on his back? Can you start CPR if you know how?\n\nYes, I'm doing compressions now!\n\nHelp is on the way. Keep doing compressions. Don't hang up. Do you know what might have caused this?\n\nHe has heart problems. He takes medication.\n\nStay on the line. The ambulance is about two minutes out.",
+        "confidence": 0.99,
+        "detected_language": "en"
+      },
+      "encoding": "none"
+    },
+    {
+      "type": "summary",
+      "dialog": 0,
+      "vendor": "openai",
+      "body": "Caller reports husband collapsed and not breathing properly. Dispatcher confirms address 4421 Oak Street apt 3B, advises CPR, and dispatches ambulance. Caller states husband has heart condition.",
+      "encoding": "none"
+    },
+    {
+      "type": "diarized",
+      "dialog": 0,
+      "vendor": "openai",
+      "body": "Dispatcher: 911, what is your emergency?\n\nCaller: I need an ambulance! My husband collapsed and he's not breathing right!\n\nDispatcher: Okay, stay calm. I'm sending help. Is he conscious?\n\nCaller: Barely. He's gasping. We're at 4421 Oak Street, apartment 3B.\n\nDispatcher: 4421 Oak Street, apartment 3B. Is he on his back? Can you start CPR if you know how?\n\nCaller: Yes, I'm doing compressions now!\n\nDispatcher: Help is on the way. Keep doing compressions. Don't hang up. Do you know what might have caused this?\n\nCaller: He has heart problems. He takes medication.\n\nDispatcher: Stay on the line. The ambulance is about two minutes out.",
+      "encoding": "none"
+    }
+  ]
+}

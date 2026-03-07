@@ -5,38 +5,40 @@ from pathlib import Path
 from datetime import datetime
 import pandas as pd
 
-st.set_page_config(page_title="VCON Viewer", page_icon="📞", layout="wide")
+st.set_page_config(page_title="vCon 2026 Viewer", page_icon="📞", layout="wide")
 
-st.title("VCON Conversation Viewer")
-st.markdown("Browse and explore VCON conversation data from TADHack 2025")
+st.title("vCon 2026 Conversation Viewer")
+st.markdown("Browse and explore vCon conversation data from vCon 2026")
 
 @st.cache_data
 def load_vcon_files():
-    """Load all VCON files from the numbered directories"""
+    """Load all vCon files from 911_calls and numbered day directories"""
     vcon_data = []
     base_path = Path(".")
-    
-    # Look for numbered directories
-    for day_dir in sorted(base_path.glob("[0-9]*")):
-        if day_dir.is_dir():
-            # Find all VCON JSON files in this directory
-            for vcon_file in sorted(day_dir.glob("*.vcon.json")):
-                try:
-                    with open(vcon_file, 'r') as f:
-                        data = json.load(f)
-                        data['file_path'] = str(vcon_file)
-                        data['day'] = day_dir.name
-                        vcon_data.append(data)
-                except Exception as e:
-                    st.error(f"Error loading {vcon_file}: {e}")
-    
+    # 911_calls + any numbered directories (18, 19, ...)
+    dirs_to_scan = []
+    if (base_path / "911_calls").is_dir():
+        dirs_to_scan.append(base_path / "911_calls")
+    for d in sorted(base_path.glob("[0-9]*")):
+        if d.is_dir():
+            dirs_to_scan.append(d)
+    for day_dir in dirs_to_scan:
+        for vcon_file in sorted(day_dir.glob("*.vcon.json")):
+            try:
+                with open(vcon_file, 'r') as f:
+                    data = json.load(f)
+                    data['file_path'] = str(vcon_file)
+                    data['day'] = day_dir.name
+                    vcon_data.append(data)
+            except Exception as e:
+                st.error(f"Error loading {vcon_file}: {e}")
     return vcon_data
 
-# Load all VCON files
+# Load all vCon files
 vcon_files = load_vcon_files()
 
 if not vcon_files:
-    st.warning("No VCON files found in the current directory")
+    st.warning("No vCon files found in the current directory")
 else:
     # Sidebar for filtering
     st.sidebar.header("Filters")
@@ -112,43 +114,62 @@ else:
                     st.write(f"**Start:** {dialog['start']}")
                     st.write(f"**Parties:** {', '.join(str(p) for p in dialog['parties'])}")
                     
-                    # Audio player
-                    audio_file = vcon['file_path'].replace('.vcon.json', '.mp3')
-                    if os.path.exists(audio_file):
-                        st.audio(audio_file)
+                    # Audio player: .mp3 or .wav (same base name as vCon). Load as bytes so playback works reliably.
+                    base = vcon['file_path'].replace('.vcon.json', '')
+                    audio_path_mp3 = base + '.mp3'
+                    audio_path_wav = base + '.wav'
+                    audio_path = audio_path_mp3 if os.path.exists(audio_path_mp3) else (audio_path_wav if os.path.exists(audio_path_wav) else None)
+                    if audio_path:
+                        try:
+                            with open(audio_path, 'rb') as f:
+                                audio_bytes = f.read()
+                            format = 'audio/mpeg' if audio_path.endswith('.mp3') else 'audio/wav'
+                            st.audio(audio_bytes, format=format)
+                            st.caption("If you hear nothing: generated placeholders are silent. Use real recordings or TTS to get speech.")
+                        except Exception as e:
+                            st.error(f"Could not load audio: {e}")
                     else:
-                        st.info("Audio file not found locally")
+                        st.info("Audio file not found locally (run scripts/generate_mp3_for_vcons.py to create silent .mp3 or .wav)")
             
             # Analysis section
             st.markdown("### Analysis")
+            def _body_text(analysis_obj):
+                """Extract display text from analysis body (string or object)."""
+                body = analysis_obj.get('body', '')
+                if isinstance(body, str):
+                    return body
+                if isinstance(body, dict):
+                    return body.get('transcript', body.get('body', str(body)))
+                return str(body) if body else ''
+
             if vcon.get('analysis'):
                 for analysis in vcon['analysis']:
                     analysis_type = analysis.get('type', 'Unknown')
                     
                     if analysis_type == 'transcript':
                         with st.expander("Transcript", expanded=True):
-                            st.text(analysis.get('body', 'No transcript available'))
+                            st.text(_body_text(analysis) or 'No transcript available')
                     
                     elif analysis_type == 'summary':
                         with st.expander("Summary"):
-                            st.write(analysis.get('body', 'No summary available'))
+                            st.write(_body_text(analysis) or 'No summary available')
                     
                     elif analysis_type == 'diarized':
                         with st.expander("Diarized Conversation"):
-                            diarized_text = analysis.get('body', '')
+                            diarized_text = _body_text(analysis)
                             # Format diarized text for better readability
                             lines = diarized_text.split('\n')
                             for line in lines:
                                 if line.strip():
-                                    if line.startswith('Customer:'):
+                                    if line.startswith('Customer:') or line.startswith('Caller:'):
                                         st.markdown(f"**{line}**")
-                                    elif line.startswith('Agent:'):
+                                    elif line.startswith('Agent:') or line.startswith('AI:') or line.startswith('Dispatcher:'):
                                         st.markdown(f"*{line}*")
                                     else:
                                         st.write(line)
             
             # Raw JSON view
-            with st.expander("Raw VCON JSON"):
+            with st.expander("Raw vCon JSON"):
                 st.json(vcon)
 
 # Add refresh button
