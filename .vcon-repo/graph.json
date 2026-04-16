@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0.0",
+  "repo": "tadhack-2025",
+  "repo_version": null,
+  "archetype": "data-repo",
+  "generated_at": "2026-04-16T15:15:45.396695+00:00",
+  "stats": {
+    "node_count": 14,
+    "edge_count": 5
+  },
+  "nodes": [
+    {
+      "id": "dataset:root",
+      "type": "dataset",
+      "name": "tadhack-2025",
+      "description": "90 files, 9.6 MB",
+      "file_count": 90,
+      "size_mb": 9.6
+    },
+    {
+      "id": "category:json",
+      "type": "category",
+      "name": ".json files",
+      "description": "43 files",
+      "count": 43
+    },
+    {
+      "id": "category:mp3",
+      "type": "category",
+      "name": ".mp3 files",
+      "description": "43 files",
+      "count": 43
+    },
+    {
+      "id": "category:md",
+      "type": "category",
+      "name": ".md files",
+      "description": "2 files",
+      "count": 2
+    },
+    {
+      "id": "category:txt",
+      "type": "category",
+      "name": ".txt files",
+      "description": "1 files",
+      "count": 1
+    },
+    {
+      "id": "category:py",
+      "type": "category",
+      "name": ".py files",
+      "description": "1 files",
+      "count": 1
+    },
+    {
+      "id": "component:18",
+      "type": "component",
+      "name": "18",
+      "file": "18",
+      "description": "10 files"
+    },
+    {
+      "id": "component:19",
+      "type": "component",
+      "name": "19",
+      "file": "19",
+      "description": "6 files"
+    },
+    {
+      "id": "component:20",
+      "type": "component",
+      "name": "20",
+      "file": "20",
+      "description": "16 files"
+    },
+    {
+      "id": "component:21",
+      "type": "component",
+      "name": "21",
+      "file": "21",
+      "description": "24 files"
+    },
+    {
+      "id": "component:22",
+      "type": "component",
+      "name": "22",
+      "file": "22",
+      "description": "12 files"
+    },
+    {
+      "id": "component:23",
+      "type": "component",
+      "name": "23",
+      "file": "23",
+      "description": "16 files"
+    },
+    {
+      "id": "component:24",
+      "type": "component",
+      "name": "24",
+      "file": "24",
+      "description": "2 files"
+    },
+    {
+      "id": "document:readme",
+      "type": "document",
+      "name": "README",
+      "file": "README.md"
+    }
+  ],
+  "edges": [
+    {
+      "from": "dataset:root",
+      "to": "category:json",
+      "type": "contains"
+    },
+    {
+      "from": "dataset:root",
+      "to": "category:mp3",
+      "type": "contains"
+    },
+    {
+      "from": "dataset:root",
+      "to": "category:md",
+      "type": "contains"
+    },
+    {
+      "from": "dataset:root",
+      "to": "category:txt",
+      "type": "contains"
+    },
+    {
+      "from": "dataset:root",
+      "to": "category:py",
+      "type": "contains"
+    }
+  ],
+  "subsystems": []
+}
