@@ -3,7 +3,7 @@
   "repo": "tadhack-2025",
   "repo_version": null,
   "archetype": "data-repo",
-  "generated_at": "2026-04-16T15:15:45.396695+00:00",
+  "generated_at": "2026-04-17T12:29:50.798991+00:00",
   "stats": {
     "node_count": 14,
     "edge_count": 5
@@ -13,8 +13,8 @@
       "id": "dataset:root",
       "type": "dataset",
       "name": "tadhack-2025",
-      "description": "90 files, 9.6 MB",
-      "file_count": 90,
+      "description": "91 files, 9.6 MB",
+      "file_count": 91,
       "size_mb": 9.6
     },
     {
@@ -35,8 +35,8 @@
       "id": "category:md",
       "type": "category",
       "name": ".md files",
-      "description": "2 files",
-      "count": 2
+      "description": "3 files",
+      "count": 3
     },
     {
       "id": "category:txt",
