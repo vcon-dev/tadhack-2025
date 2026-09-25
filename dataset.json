@@ -1,6 +1,6 @@
 {
   "name": "tadhack-2025",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Synthetic TADHack 2025 demo vCons (IETF vCon 0.4.0)",
   "vcon_dir": ".",
   "count": 43,
